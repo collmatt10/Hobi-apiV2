@@ -4,13 +4,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12">
       <div class="card">
         <div class="card-header">
-          Movies
+          Movie Manager
            <a href="{{  route('admin.movies.create') }}" class=" float-right btn btn-primary" >Add</a>
         </div>
        <div class="card-body">
+           <div class="col-sm-12">
          @if (count($movies) === 0)
          <p>There are no Movies ! </p>
          @else
@@ -46,6 +47,7 @@
           </table>
           @endif
        </div>
+     </div>
       </div>
      </div>
     </div>

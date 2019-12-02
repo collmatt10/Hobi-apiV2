@@ -18,7 +18,7 @@
                   </br>
                   Please select what media you would like to manage
                 </br>
-                <a href="{{route('admin.movies.index')}}">Movies</a>
+                <a href="{{route('admin.movies.index')}}">Movies Manager</a>
                 </div>
             </div>
         </div>

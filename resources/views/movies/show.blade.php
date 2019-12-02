@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-  <h3 class="text-center">{{$movie->title}}</h3>
+  <h3 class="text-left">{{$movie->title}}</h3>
     <p>{{$movie->director}}</p>
       <p>{{$movie->company}}</p>
         <p>{{$movie->runtime}}</p>
