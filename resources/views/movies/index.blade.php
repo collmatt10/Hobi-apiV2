@@ -1,10 +1,10 @@
 @extends('layouts.app')
 <script>
-https://api.themoviedb.org/3/movie/latest?api_key=8c988e866c6227c3a7cc9b31868699bb&language=en-US
+https://api.themoviedb.org/3/movie/111?api_key=8c988e866c6227c3a7cc9b31868699bb&language=en-US
 var api_key = '8c988e866c6227c3a7cc9b31868699bb';
 var baseUrl = 'https://api.themoviedb.org/3/';
 
-fetch(baseUrl+'movie/latest?api_key='+api_key+'&language=en+US')
+fetch(baseUrl+'movie/111?api_key='+api_key+'&language=en+US')
 .then(response => response.json())
 .then(function(data){
   console.log("all data");

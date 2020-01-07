@@ -1,50 +1,46 @@
 @extends('layouts.app')
+<!-- Load Axios -->
+    {--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}
+    <!-- Load Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script>
-https://api.themoviedb.org/3/movie/latest?api_key=8c988e866c6227c3a7cc9b31868699bb&language=en-US
-var api_key = '8c988e866c6227c3a7cc9b31868699bb';
-var baseUrl = 'https://api.themoviedb.org/3/';
-
-
-fetch(baseUrl+'movie/latest?api_key='+api_key+'&language=en+US')
-.then(response => response.json())
-.then(function(data){
-  console.log("all data");
-  console.log(data);
+var app = new Vue({
+    el: "#app",
+    data: {
+        items: ['original_title', 'overview'],
+        baseUrl: 'https://api.themoviedb.org/3',
+        apiKey: '8c988e866c6227c3a7cc9b31868699bb',
+        imageUrl: 'https://image.tmdb.org/t/p/w342',
+        loaded: true
+    },
+    created: function() {
+        // Create the method you made below
+        this.fetchData();
+    },
+    methods: {
+        // Fetch data from the API
+        fetchData: function() {
+            this.$http.get(this.baseUrl + '/discover/movie?api_key=' + this.apiKey + '&sort_by=popularity.desc').then(response => {
+                this.items = response.body;
+                this.loaded = false;
+            });
+        }
+    }
 });
 </script>
 
 @section('content')
-    <h2 class="text-left">All Movies</h2>
-
-    <div class="row">
-
-
-      @forelse($movies as $movie)
-<div class="col-6">
-  <li class="list-group-item my-2">
-    <h4 class="float-left">{{ $movie->title }}</h5>
-      <script>
-      $response = $this->get(baseUrl+'movie/latest?api_key='+api_key+'&language=en+US');
-      </script>
-     <p class="float-right">Created by: {{ $movie->user->name }}</p> {{-- from the user relationship --}}
-    <div class="clearfix"></div>
-    <p>{{ Str::limit($movie->body,20) }}</p>
-    <small class="float-right">{{ $movie->created_at->diffForHumans() }}</small>
-    <a href="{{ route('movies.show',$movie->id) }}">Read More</a>
-  </li>
-
+<div id="app">
+    <div v-show="loaded" class="loader"></div>
+    <ul>
+        <li v-for="data in items.results">
+            <img :src="imageUrl + data.poster_path" alt="">
+            <section>
+                <h3>{{ data.original_title }}</h3>
+                <p>{{ data.overview }}</p>
+            </section>
+        </li><!--
+    --></ul>
 </div>
-
-
-
-@empty
-   <h4 class="text-center">No Movies Found!</h4>
-@endforelse
-    </ul>
-    <div class="d-flex justify-content-center">
-
-</div>
-    </div>
-
-
 @endsection
