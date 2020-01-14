@@ -3,7 +3,7 @@
 
 @section('content')
 <!-- Load Axios -->
-    {--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -38,6 +38,11 @@
         }
     });
     </script>
+    <div class="col-6">
+      <li class="list-group-item my-2">
 
+      </li>
+
+    </div>
 
 @endsection
