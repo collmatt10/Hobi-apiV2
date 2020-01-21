@@ -7,13 +7,6 @@
     <!-- Load Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <div id="app">
-        <div v-show="loaded" class="loader"></div>
-        <ul>
-
-       </ul>
-    </div>
-
     <script>
     var app = new Vue({
         el: "#app",
@@ -26,23 +19,45 @@
             myList: null
         },
         mounted: function() {
-            // Create the method you made below
+            
             fetch(this.baseUrl + '/discover/movie?api_key=' + this.apiKey + '&sort_by=popularity.desc').then(response => response.json()).then(function(data) {
               console.log(data);
               this.myList = data;
               this.loaded = false;
-            });
+            })
         },
         methods: {
-            // Fetch data from the API
-        }
-    });
+          getMovies(){
+            let token = localStorage.getItem('token');
+            axios.get('/api/movies', {
+              headers: { Authorization: "Bearer " + token}
+            })
+            .then(function(response){
+              console.log(response);
+             app.movies = response.data.data;
+           })
+            .catch(function(error){
+              console.log(error);
+            })
+          }
+        },
+})
     </script>
-    <div class="col-6">
+    <div id="app">
+    <div v-show="loaded" class="loader"></div>
+    <div  v-for="item in items.results" class="col-6">
       <li class="list-group-item my-2">
+        <b-card-text>
+         Data goes in here
 
+        </b-card-text>
+
+        <b-button href="#" variant="primary"></b-button>
+        </b-card>
+        </div>
       </li>
 
     </div>
+
 
 @endsection
