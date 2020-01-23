@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-sm-12">
-      <div class="card">
+      <div class="card ">
         <div class="card-header">
           Movie Manager
            <a href="{{  route('admin.movies.create') }}" class=" float-right btn btn-primary" >Add</a>

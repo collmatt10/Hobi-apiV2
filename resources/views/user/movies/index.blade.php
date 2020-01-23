@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 @section('content')
 <!-- Load Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -19,7 +17,7 @@
             myList: null
         },
         mounted: function() {
-            
+
             fetch(this.baseUrl + '/discover/movie?api_key=' + this.apiKey + '&sort_by=popularity.desc').then(response => response.json()).then(function(data) {
               console.log(data);
               this.myList = data;
