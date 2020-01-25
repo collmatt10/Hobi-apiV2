@@ -5,18 +5,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-sm-12">
-      <div class="card ">
-        <div class="card-header">
+
+        <div class="header">
           Movie Manager
            <a href="{{  route('admin.movies.create') }}" class=" float-right btn btn-primary" >Add</a>
         </div>
-       <div class="card-body">
-           <div class="col-sm-12">
+       <div class="card-body ">
+           <div class="col-sm-12 ">
          @if (count($movies) === 0)
          <p>There are no Movies ! </p>
          @else
           <table id="table-movies" class="table table-hover">
-            <thead>
+            <thead class="mybody">
               <th>Title</th>
               <th>Director</th>
               <th>Company</th>
@@ -26,14 +26,14 @@
             </thead>
             <tbody>
               @foreach ($movies as $movie)
-              <tr data=id="{{$movie->id}}">
+              <tr data=id="{{$movie->id}}" class="formbody">
               <td>{{  $movie->title  }}</td>
               <td>{{  $movie->director  }}</td>
               <td>{{  $movie->company  }}</td>
               <td>{{  $movie->runtime  }}</td>
               <td>{{  $movie->boxoffice  }}</td>
               <td>
-                <a href="{{route ('admin.movies.show', $movie->id) }}" class="btn btn-default">View</a>
+                <a href="{{route ('admin.movies.show', $movie->id) }}" class="btn btn-info">View</a>
                 <a href="{{route ('admin.movies.edit', $movie->id) }}" class="btn btn-warning">Edit</a>
                 <form style="display:inline-block" method="POST" action="{{ route ('admin.movies.destroy', $movie->id)   }}">
                   <input type="hidden" name="_method" value="DELETE">
@@ -48,7 +48,7 @@
           @endif
        </div>
      </div>
-      </div>
+
      </div>
     </div>
    </div>

@@ -4,11 +4,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="card">
-        <div class="card-header">
+
+        <div class="header">
           Add new Movie
         </div>
-        <div class="card-body">
+        <div class="mybody">
           @if ($errors->any())
           <div class="alert alert-danger">
             <ul>
@@ -60,7 +60,7 @@
         </form>
       </div>
 
-    </div>
+
 
   </div>
 

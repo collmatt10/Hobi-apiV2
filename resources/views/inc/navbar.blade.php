@@ -18,6 +18,7 @@
                        <li class="nav-item">
                            <a href="{{ route('user.movies.index') }}" class="nav-link">Movies</a>
                        </li>
+                       
                        <li class="nav-item dropdown">
                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                              <img src="{{asset('storage/images/'.Auth::user()->image)}}" class+"rounded-circle mr-1" height="30px" width="30px"/>

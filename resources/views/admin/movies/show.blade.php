@@ -7,13 +7,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="card">
-        <div class="card-header">
+
+        <div class="header">
           Movie: {{ $movie->title   }}
         </div>
-       <div class="card-body">
+       <div class="formbody">
           <table class="table table-hover">
-            <tbody>
+            <tbody class="mybody">
               <tr>
                 <td>Title</td>
                   <td>{{ $movie->title }}</td>
@@ -42,7 +42,7 @@
 
           </table>
 
-          <a href="{{route ('admin.movies.index') }}" class="btn btn-default">Back</a>
+          <a href="{{route ('admin.movies.index') }}" class="btn btn-secondary">Back</a>
           <a href="{{route ('admin.movies.edit', $movie->id) }}" class="btn btn-warning">Edit</a>
           <form style="display:inline-block" method="POST" action="{{ route ('admin.movies.destroy', $movie->id)   }}">
             <input type="hidden" name="_method" value="DELETE">
@@ -51,29 +51,25 @@
           </form>
 
                   </div>
-                </div>
 
-                <div class="card">
-                  <div class="card-header">
-                    Reviews
+
+
+                  <div class="header">
+                     Critic Reviews
                   </div>
-                   <div class="card-body">
+                   <div class="formbody">
 
-
-                               <h2>
-                                 Reviews
-                                   </h2>
                                  @if (count($reviews) == 0 )
                                    <p>there are no reviews for this movie</p>
                                    @else
                                    <table class="table">
-                                     <thead>
+                                     <thead class="mybody">
                                        <th>Title</th>
                                        <th>Body</th>
                                       {{--  <th>Created By:</th>--}}
                                         <th>Actions</th>
                                      </thead>
-                                    <tbody>
+                                    <tbody class="mybody">
                                       @foreach ($reviews as $review)
                                       <tr>
                                          <th>{{ $review->title}}</th>
@@ -93,7 +89,7 @@
                                          @endif
                   </div>
 
-              </div>
+
             </div>
           </div>
 @endsection
