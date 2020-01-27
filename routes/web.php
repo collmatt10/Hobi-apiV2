@@ -45,10 +45,13 @@ Route::post('/admin/movies/store','Admin\MovieController@store')->name('admin.mo
 Route::get('/admin/movies/{id}/edit','Admin\MovieController@edit')->name('admin.movies.edit');
 Route::put('/admin/movies/{id}/update','Admin\MovieController@update')->name('admin.movies.update');
 Route::delete('/admin/movies/{id}','Admin\MovieController@destroy')->name('admin.movies.destroy');
-
 Route::delete('/admin/movies/{id}/reviews/{rid}','Admin\ReviewController@destroy')->name('admin.reviews.destroy');
+
 Route::get('/critic/movies/{id}/reviews/create','Critic\ReviewController@create')->name('critic.reviews.create');
 Route::post('/critic/movies/{id}/reviews/create','Critic\ReviewController@store')->name('critic.reviews.store');
+//Route::get('/critic/auth/ConfirmAuthenication','Auth\ConfirmAuthenicationController')->name('critic.auth.ConfirmAuthenication');
+//Route::post('/critic/movies/{id}/reviews/create','Critic\ReviewController@store')->name('critic.reviews.store');
+
 
 Auth::routes(['verify'=> true]);
 //Auth::routes();
