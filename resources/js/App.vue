@@ -1,38 +1,20 @@
 <template>
-<div>
-This is app view
-<Example/>
-</div>
+  <b-container>
+    <b-row>
+      <b-col>
+<MovieViewer/>
+</b-col>
+</b-row>
+</b-container>
 </template>
 
 <script>
-import Example from'./components/example'
+import MovieViewer from './components/MovieViewer.vue'
 export default {
-name: 'app',
-components:{
-  Example
-},
-data(){
-return{
-movies:[]
+  name: 'app',
+  components: {
+    MovieViewer
   }
-},
-methods: {
-  getMovies(){
-    let app = this;
-    let token = localStorage.getItem('token');
-    axios.get('/api/movies', {
-      headers: { Authorization: "Bearer " + token}
-    })
-    .then(function(response){
-      console.log(response);
-     app.movies = response.data.data;
-   })
-    .catch(function(error){
-      console.log(error);
-    })
-  }
-},
 }
 </script>
 
